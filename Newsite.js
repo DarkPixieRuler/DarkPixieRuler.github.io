@@ -20,7 +20,7 @@ else if (response === "MyBestie") {
   alert("I see, a god much like me, most respected!");
 }
 else if (response === "") {
-  alert("BEGONE MORTAL INSECT");
+  alert("BEGONE MORTAL INSECT YOU ARE TESTING MY PATIENCE");
   location.href="index.html";
 }
 else {
