@@ -1,12 +1,12 @@
 var response = prompt("Who are you mortal?")
 
-if (response === "HalleBotGod110") {
-  alert("Ahh I see you are god, you may enter.")
+if (response === "HalleBot God") {
+  alert("Ahh I see you are the god, you may enter my ruler.")
 
 }
 
 else if (response === "Architech Celeste") {
-  alert("GET OUT OF HERE MORTAL!!");
+  alert("You do not deserve to be here, GET OUT OF HERE MORTAL!!");
   location.href="index.html";
 }
 else if (response === "Mr. Gaspard") {
@@ -14,4 +14,11 @@ else if (response === "Mr. Gaspard") {
 }
 else if (response === "Doom Guy") {
   alert("A most respected mortal, I see, you may enter.");
+}
+else if (response === "") {
+  alert("BEGONE MORTAL INSECT");
+  location.href="index.html";
+}
+else {
+  //this should do nothing
 }
