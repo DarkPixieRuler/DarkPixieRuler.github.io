@@ -20,5 +20,5 @@ else if (response === "") {
   location.href="index.html";
 }
 else {
-  //this should do nothing
+  location.href="index.html";
 }
