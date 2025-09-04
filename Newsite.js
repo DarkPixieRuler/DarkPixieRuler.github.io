@@ -1,3 +1,4 @@
+
 var response = prompt("Who are you mortal?")
 
 if (response === "HalleBot God") {
@@ -15,10 +16,14 @@ else if (response === "Mr. Gaspard") {
 else if (response === "Doom Guy") {
   alert("A most respected mortal, I see, you may enter.");
 }
+else if (response === "MyBestie") {
+  alert("I see, a god much like me, most respected!");
+}
 else if (response === "") {
   alert("BEGONE MORTAL INSECT");
   location.href="index.html";
 }
 else {
+  alert("YOU ARE TESTING MY SYSTEM????? HOW DARE YOU");
   location.href="index.html";
 }
