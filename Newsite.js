@@ -24,6 +24,6 @@ else if (response === "") {
   location.href="index.html";
 }
 else {
-  alert("YOU ARE TESTING MY SYSTEM????? HOW DARE YOU");
-  location.href="index.html";
+  alert("YOU ARE TESTING MY SYSTEM????? HOW DARE YOU! YOU WILL NOW BE BANISHED");
+  location.href="extrasite.html";
 }
