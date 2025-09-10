@@ -31,17 +31,19 @@ $(function () {
 
 
     // TODO 2 - Create Platforms
+    //my staircases!!
 createPlatform(300, 700, 200, 10);
 createPlatform(600, 600, 200, 10);
 createPlatform(300, 500, 200, 10);
 createPlatform(600, 400, 200, 10);
 createPlatform(300, 300, 200, 10);
+//              X    Y    W    H
 
 
     // TODO 3 - Create Collectables
-createCollectable("database", 375, 200, 0.5, 0.7)
-createCollectable("database", 675, 200, 0.5, 0.7)
-createCollectable("database", 375, 350, 0.5, 0.7)
+createCollectable("coin", 375, 200, 0.5, 0.7)
+createCollectable("coin", 675, 200, 0.5, 0.7)
+createCollectable("coin", 375, 350, 0.5, 0.7)
     
     // TODO 4 - Create Cannons
 createCannon("right", 300, 2000);
