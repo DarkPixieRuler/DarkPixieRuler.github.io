@@ -24,14 +24,4 @@ else {
   alert("YOU ARE TESTING MY SYSTEM????? HOW DARE YOU! YOU WILL NOW BE BANISHED");
   location.href="extrasite.html";
 }
-   var bgm = new Audio("AUDIO PATH"); // replace with the actual path to your mp3
-bgm.loop = true; // keeps playing in a loop
-bgm.volume = 0.5; // optional: volume between 0.0 and 1.0
-
-window.playAudio = function () {
-  if (bgm.paused) {
-    bgm.play();
-  } else {
-    bgm.pause();
-  }
-};
+//https://m.youtube.com/shorts/UgY2OeyrnuY lol funny
