@@ -1,6 +1,6 @@
 
 var response = prompt("Who are you mortal?")
-if (response === "HalleBot God") {
+if (response === "HalleBotGod") {
   alert("Ahh I see you are the god, you may enter my ruler.")
 }
 else if (response === "Architech Celeste") {
@@ -14,7 +14,7 @@ else if (response === "Doom Guy") {
   alert("A most respected mortal, I see, you may enter.");
 }
 else if (response === "MyBestie") {
-  alert("I see, a god much like me, most respected!");
+  alert("I see, a god much like me!");
 }
 else if (response === "") {
   alert("BEGONE MORTAL INSECT YOU ARE TESTING MY PATIENCE");
