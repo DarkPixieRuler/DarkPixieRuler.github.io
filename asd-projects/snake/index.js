@@ -14,10 +14,10 @@ var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
 // TODO 4, Part 1: Create the apple variable
-
+var apple = {}
 
 // TODO 5, Part 1: Create the snake variable
-
+var snake {}
 
 // Constant Variables
 var ROWS = 20;
@@ -52,7 +52,7 @@ function init() {
   
   // TODO 4, Part 3: initialize the apple
 
-
+makeApple()
   // TODO 6, Part 1: Initialize the interval
 
 
@@ -207,8 +207,11 @@ function endGame() {
  */
 function makeApple() {
   // TODO 4, Part 2: Fill in this function's code block
-
-
+apple.element = $("<div>").addClass("apple").appendTo(board);
+var randomPosition = getRandomAvailablePosition();
+apple.row = randomPosition.row;
+apple.column = randomPosition.column;
+repositionSquare(apple);
 
 }
 
