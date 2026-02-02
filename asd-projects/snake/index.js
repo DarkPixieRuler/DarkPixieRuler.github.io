@@ -17,7 +17,7 @@ var started = false; // variable to keep track of whether the game has started
 var apple = {}
 
 // TODO 5, Part 1: Create the snake variable
-var snake {}
+var snake = {}
 
 // Constant Variables
 var ROWS = 20;
