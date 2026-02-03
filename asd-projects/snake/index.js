@@ -94,9 +94,7 @@ function checkForNewDirection(event) {
   perpendicular to the current direction
   */
 
-  if (activeKey === KEY.LEFT) {
-    snake.head.direction = "left";
-  }
+
 
  if (activeKey === KEY.LEFT || activeKey === 65) {
 // 65 = A
@@ -137,7 +135,7 @@ function moveSnake() {
 
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
-for ( i = snake.body.length; i > 0; i-- ) {
+for ( i = snake.body.length - 1; i > 0; i-- ) {
 var currentSnakeSquare = snake.body[i];
 var snakeSquareInFront = snake.body[i - 1];
 
@@ -160,7 +158,7 @@ if (snake.head.direction === "up") {
 if (snake.head.direction === "down") {
   snake.head.row = snake.head.row + 1;
 }
-repositionSquare(square.head)
+repositionSquare(snake.head)
 }
 
 // TODO 9: Create a new helper function
