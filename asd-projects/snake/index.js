@@ -47,14 +47,18 @@ $("body").on("keydown", handleKeyDown);
 init();
 
 function init() {
-  // TODO 5, Part 2: initialize the snake
-  
+  // TODO 5, Part 3: initialize the snake
+  snake.body = []; // Start with an empty body
+makeSnakeSquare(10, 10); // Create the first square in the middle of the board
+makeSnakeSquare(10, 9); // Create a second square to the left of the first
+makeSnakeSquare(10, 8); // Create a third square to the left of the second
+snake.head = snake.body[0]; // Mark the first segment as the head
   
   // TODO 4, Part 3: initialize the apple
 
 makeApple()
   // TODO 6, Part 1: Initialize the interval
-
+updateInterval = setInterval(update, 100);
 
 }
 
@@ -68,9 +72,17 @@ makeApple()
  */
 function update() {
   // TODO 6, Part 2: Fill in the update function's code block
+if (started) {
+  moveSnake();
+}
 
+if (hasHitWall() || hasCollidedWithSnake()) {
+  endGame();
+}
 
-
+if (hasCollidedWithApple()) {
+  handleAppleCollision();
+}
 
 }
 
@@ -86,7 +98,25 @@ function checkForNewDirection(event) {
     snake.head.direction = "left";
   }
 
-  // FILL IN THE REST
+ if (activeKey === KEY.LEFT || activeKey === 65) {
+// 65 = A
+snake.head.direction = "left";
+}
+
+if (activeKey === KEY.UP || activeKey === 87) {
+// 87 = W
+snake.head.direction = "up";
+}
+
+if (activeKey === KEY.RIGHT || activeKey === 68) {
+// 68 = D
+snake.head.direction = "right";
+}
+
+if (activeKey === KEY.DOWN || activeKey === 83) {
+// 83 = S
+snake.head.direction = "down";
+}
 
   // console.log(snake.head.direction);     // uncomment me!
 }
@@ -107,21 +137,38 @@ function moveSnake() {
 
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
+for ( i = snake.body.length; i > 0; i-- ) {
+var currentSnakeSquare = snake.body[i];
+var snakeSquareInFront = snake.body[i - 1];
 
+moveBodyAToBodyB(currentSnakeSquare, snakeSquareInFront);
+
+repositionSquare(currentSnakeSquare);
+}
   /* 
-    TODO 8: determine the next row and column for the snake's head
+    TODO 8: determine the next row and column for the snake's head */
     
-    HINT: The snake's head will need to move forward 1 square based on the value
-    of snake.head.direction which may be one of "left", "right", "up", or "down"
-  */
-
-
-
-
+ if (snake.head.direction === "left") {
+  snake.head.column = snake.head.column - 1;
+}
+if (snake.head.direction === "right") {
+  snake.head.column = snake.head.column + 1;
+}
+if (snake.head.direction === "up") {
+  snake.head.row = snake.head.row - 1;
+}
+if (snake.head.direction === "down") {
+  snake.head.row = snake.head.row + 1;
+}
+repositionSquare(square.head)
 }
 
 // TODO 9: Create a new helper function
-
+function moveBodyAToBodyB(bodyA, bodyB) {
+  bodyA.row = bodyB.row
+   bodyA.direction = bodyB.direction
+    bodyA.column = bodyB.column
+}
 
 
 
@@ -221,7 +268,27 @@ repositionSquare(apple);
  */
 function makeSnakeSquare(row, column) {
   // TODO 5, Part 2: Fill in this function's code block
+// initialize a new snakeSquare Object
+const snakeSquare = {};
 
+// make the snakeSquare element and add it to the board
+snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+
+// assign the row and column position
+snakeSquare.row = row;
+snakeSquare.column = column;
+
+// set the snake’s position visually
+repositionSquare(snakeSquare);
+
+// if this is the head, give it a unique ID
+if (snake.body.length === 0) {
+snakeSquare.element.attr("id", "snake-head");
+}
+
+// add the square to the snake’s body and update the tail
+snake.body.push(snakeSquare);
+snake.tail = snakeSquare;
 
 
 
@@ -240,7 +307,8 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 7: make the handleKeyDown function register which key is pressed
-
+activeKey = event.which;
+console.log(activeKey);
 
   // If a valid direction key is pressed, start the game
   if (
