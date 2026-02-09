@@ -178,7 +178,10 @@ function hasHitWall() {
     
     HINT: What will the row and column of the snake's head be if this were the case?
   */
-
+if (snake.head.row < 0) {return true}
+if (snake.head.row > ROWS) {return true}
+if (snake.head.column < 0) {return true}
+if (snake.head.column > COLUMNS) {return true}
 
 
   return false;
@@ -191,7 +194,7 @@ function hasCollidedWithApple() {
     
     HINT: Both the apple and the snake's head are aware of their own row and column
   */
-
+if (snake.head.row === apple.row && snake.head.column === apple.column) {return true}
 
 
   return false;
