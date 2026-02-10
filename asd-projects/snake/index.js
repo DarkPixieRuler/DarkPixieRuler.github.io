@@ -47,6 +47,10 @@ $("body").on("keydown", handleKeyDown);
 init();
 
 function init() {
+  // Load and display the high score from localStorage on initial load
+var savedHighScore = localStorage.getItem("highScore") || 0;
+highScoreElement.text("High Score: " + savedHighScore
+  
   // TODO 5, Part 3: initialize the snake
   snake.body = []; // Start with an empty body
 makeSnakeSquare(10, 10); // Create the first square in the middle of the board
