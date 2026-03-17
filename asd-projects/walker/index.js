@@ -39,6 +39,7 @@ var walker = {
   Note: You can have multiple event listeners for different types of events.
   */
   $(document).on('keydown', handleKeyDown);                          
+$(document).on('keyup', handleKeyUp);
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -50,7 +51,7 @@ var walker = {
   */
   function newFrame() {
     repositionGameItem()
-
+redrawGameItem();
   }
   
   /* 
@@ -60,11 +61,22 @@ var walker = {
   Note: You can have multiple event handlers for different types of events.
   */
 function handleKeyDown(event) {
-if (event.which === KEY.LEFT || event.which === KEY.A) {walker.speedX = -5}
-if (event.which === KEY.RIGHT || event.which === KEY.D) {walker.speedX = 5}
-if (event.which === KEY.UP || event.which === KEY.W) {walker.speedY = -5}
-if (event.which === KEY.DOWN || event.which === KEY.S) {walker.speedY = 5}
+if (event.which === KEY.DOWN) {
+walker.speedY = 5;
 }
+}
+function handleKeyUp(event) {
+if (
+event.which === KEY.LEFT ||
+event.which === KEY.UP ||
+event.which === KEY.RIGHT ||
+event.which === KEY.DOWN
+) {
+walker.Xspeed = 0;
+walker.Yspeed = 0;
+}
+}
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
