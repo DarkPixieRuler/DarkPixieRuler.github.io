@@ -51,6 +51,7 @@ $(document).on('keyup', handleKeyUp);
   */
   function newFrame() {
     repositionGameItem()
+    wallCollision()
 redrawGameItem();
   }
   
@@ -61,22 +62,28 @@ redrawGameItem();
   Note: You can have multiple event handlers for different types of events.
   */
 function handleKeyDown(event) {
+if (event.which === KEY.LEFT) {
+walker.speedX = -5;
+}
+if (event.which === KEY.RIGHT) {
+walker.speedX = 5;
+}
+if (event.which === KEY.UP) {
+walker.speedY = -5;
+}
 if (event.which === KEY.DOWN) {
 walker.speedY = 5;
 }
 }
 function handleKeyUp(event) {
-if (
-event.which === KEY.LEFT ||
-event.which === KEY.UP ||
-event.which === KEY.RIGHT ||
-event.which === KEY.DOWN
-) {
-walker.Xspeed = 0;
-walker.Yspeed = 0;
-}
+if (event.which === KEY.UP || event.which === KEY.DOWN) {
+walker.speedY = 0;
 }
 
+if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
+walker.speedX = 0;
+}
+}
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -89,6 +96,13 @@ walker.Y = walker.Y + walker.speedY
 $("#walker").css("left", walker.X);
 $("#walker").css("top", walker.Y);
 }
+
+function wallCollision () {
+  var bWidth = $("#board").width()
+  var bHeight = $("#board").height()
+  if (walker.X < 0) {walker.X = 0}
+}
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
